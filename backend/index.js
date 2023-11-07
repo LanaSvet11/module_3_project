@@ -1,8 +1,9 @@
-import express from "express";
-import { PORT, mongoDBURL } from "./config.js";
-import mongoose from "mongoose";
-import booksRoute from "./routes/booksRoute.js";
-import cors from "cors";
+const express = require("express");
+
+const mongoose = require("mongoose");
+const booksRoute = require("./routes/booksRoute.js");
+const path = require("path");
+const cors = require("cors");
 
 const app = express();
 
@@ -22,7 +23,7 @@ app.use(cors());
 // );
 app.use((req, res, next) => {
   if (req.path.startsWith("/server")) {
-    req.url = req.url.replace("/server", ""); // strip /server from the path
+    req.url = req.url.replace("/server", ""); // strip /server = the path
   }
   next();
 });
@@ -36,11 +37,13 @@ app.get("/", (request, response) => {
 app.use("/books", booksRoute);
 
 mongoose
-  .connect(mongoDBURL)
+  .connect(
+    "mongodb+srv://svgolovatenko:efX2dsE8YSK2REyf@cluster0.kblhcwc.mongodb.net/books-collection?retryWrites=true&w=majority"
+  )
   .then(() => {
     console.log("App connected to database");
-    app.listen(PORT, () => {
-      console.log(`App is listening to port: ${PORT}`);
+    app.listen(5555, () => {
+      console.log(`App is listening to port: 5555`);
     });
   })
   .catch((error) => {
