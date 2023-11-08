@@ -22,9 +22,9 @@ MERN stack (MongoDB, Express, React, Node.js), React-Router-dom, Tailwind CSS.
 
 1. Clone this repository to your local machine:
 
-git clone https://github.com/LanaSvet11/MOD1-Project.git
+git clone https://github.com/LanaSvet11/module_3_project
 
-2. Open the index.html file in your web browser to launch the application.
+2. Open the Visual Studio Code to launch the application.
 
 ## Contributing
 
